@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="submitForm">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+        
+    </form>
+</body>
+<script>
+    const form = document.getElementById('submitForm')
+    form.addEventListener('submit', webhookSubmit)
+    async function webhookSubmit(event) {
+        event.preventDefault()
+        const title = "Test Title"
+        const text = "test text"
+        const result = await fetch('/json', {
+            method: 'POST',
+            headers: { "contentType":"application/json"},
+            body: {title, text: text}
+        }).then(res => res.json())
+    }    
+</script>
+</html>
