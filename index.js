@@ -15,8 +15,9 @@ app.get("/", (req, res) => {
         title: 'Teams Webhook'
     })
 })
-app.post('/index', async (req, res) => {
-    console.log(req)
+app.post('/json', async (req, res) => {
+    console.log(req.body.title)
+    console.log(req.body.text)
     await webhook.send(JSON.stringify({
         "type":"message",
         "attachments":[{
